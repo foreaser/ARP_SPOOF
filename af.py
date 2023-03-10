@@ -15,16 +15,16 @@ my_mac="70:DD:CC:BB:AA:FF"
 # 네트워크 인터페이스
 iface = "이더넷"
 
-# for ip in target_ip:
-#     time.sleep(1)
-#     try:
-#         result, unanswered = srp(Ether(dst="ff:ff:ff:ff:ff:ff")/ARP(pdst=ip), iface=iface, timeout=2, verbose=False)   # 대상 IP 주소에 대한 MAC 주소 확인
-#         target_mac.append(result[0][1].hwsrc)
-#     except:
-#         print(f"{ip}의 MAC주소 받아오기 실패")
+for ip in target_ip:
+    time.sleep(1)
+    try:
+        result, unanswered = srp(Ether(dst="ff:ff:ff:ff:ff:ff")/ARP(pdst=ip), iface=iface, timeout=2, verbose=False)   # 대상 IP 주소에 대한 MAC 주소 확인
+        target_mac.append(result[0][1].hwsrc)
+    except:
+        print(f"{ip}의 MAC주소 받아오기 실패")
 
-# if (len(target_mac) != len(target_ip)): #ip n개에 대한 mac주소 n개가 확보되지 않았으면 프로그램 종료
-#     exit()
+if (len(target_mac) != len(target_ip)): #ip n개에 대한 mac주소 n개가 확보되지 않았으면 프로그램 종료
+    exit()
 
 print(target_ip, target_mac)
 
