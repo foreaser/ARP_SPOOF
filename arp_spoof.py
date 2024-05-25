@@ -13,7 +13,7 @@ target_ip = ["172.30.0.2"]
 target_mac=[]
 my_mac="00:DD:CC:BB:AA:FF"
 # 네트워크 인터페이스
-iface = "이더넷"
+iface = "ethernet1"
 
 for ip in target_ip:
     time.sleep(1)
