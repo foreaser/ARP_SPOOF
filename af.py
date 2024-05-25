@@ -5,13 +5,13 @@ from scapy.layers.l2 import ARP
 from colorama import Fore, Style
 import scapy.all as scapy
 
-send_cicle = int(input("재전송 패킷을 보낼 주기 입력(초) : "))
+send_cycle = int(input("재전송 패킷을 보낼 주기 입력(초) : "))
 send_count = int(input("총 보낼 packet 수 : "))
 # 끊을 대상 IP 주소
-gatway_ip="172.36.141.1"
-target_ip = ["172.36.141.54"]
+gatway_ip="172.30.0.1"
+target_ip = ["172.30.0.2"]
 target_mac=[]
-my_mac="70:DD:CC:BB:AA:FF"
+my_mac="00:DD:CC:BB:AA:FF"
 # 네트워크 인터페이스
 iface = "이더넷"
 
@@ -41,8 +41,8 @@ for j in range(send_count):
 
         print(Fore.GREEN+f"\n전송완료({j+1}/{send_count})"+Style.RESET_ALL,end="\n")
         if j != (send_count-1):
-            for i in range(send_cicle):
-                print(f"\r{send_cicle-i}초 뒤 재 전송", end="")
+            for i in range(send_cycle):
+                print(f"\r{send_cycle-i}초 뒤 재 전송", end="")
                 time.sleep(1)
         else:
             print(f"\n패킷 총 {j+1}개 전송 완료.\n")
